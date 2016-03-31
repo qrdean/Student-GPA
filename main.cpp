@@ -1,7 +1,7 @@
 //Quinton Dean
-//Lab 3 - Student GPA
+//Lab 4 - Student GPA
 
-/* This lab calculates Student GPA from a letter grade and displays it on screen
+/* this is the same as the previous lab but using struct for student
 */
 #include <iostream>
 #include <fstream>
@@ -10,13 +10,28 @@
 using namespace std;
 #include "\getline.h"
 
+struct student
+{
+    string cLog;
+    string cStu;
+    string grades;
+    string semester;
+    int pthours
+    int pts
+    float credits
+    float stuid
+    string coursid[5];
+    string grade[5];
+
+};
 int main()
 {
-    int pthours, pts, i=0;                                      // i is counter
+    student sc;
+    int pthours, pts, i=0;              // i is counter
     float gpa;
     ifstream course;
     ifstream students;
-    string junk, cLog, cStu, grades, semester;                  //cLog is coursID for course.txt; cStu = courseID for student.txt;
+    string junk, cLog, cStu, grades, semester; //cLog is coursID for course.txt; cStu = courseID for student.txt;
     float credits, stuid, creditTotal=0, pointTotal =0, pthoursTotal =0;
     course.open("course.txt");
     students.open("student.txt");
@@ -33,34 +48,30 @@ int main()
         return 10;
     }
     getline(course, junk);               //pre-read
-    course >> cLog >> credits;
+    course >> sc.cLog >> sc.credits;
     getline(students, junk);
-    students >> stuid >> cStu >> semester >> grades;
+    students >> sc.stuid >> sc.cStu >> sc.semester >> sc.grades;
     while(!students.eof())
     {
 
+        if(i > Student.size())
+        {
+          Student.push_back();
+        }
 
-        if(i > courseid.size())
+        if(sc.cStu==sc.cLog)
         {
-          courseid.resize(i);
-        }
-        if(i > grade.size())
-        {
-          grade.resize(i);
-        }
-        if(cStu==cLog)
-        {
-          courseid.at(i) = cStu;
+          sc.courseid(i) = sc.cStu;
 
-        if(grades=="A")
+        if(sc.grades=="A")
         {
-            grade.at(i)=grades;
-            pts = 4;
+            sc.grade(i)=sc.grades;
+            sc.pts = 4;
         }
-        if(grades=="B")
+        if(sc.grades=="B")
         {
-            grade.at(i)=grades;
-            pts = 3;
+            sc.grade(i)=sc.grades;
+            sc.pts = 3;
         }
         if(grades=="C")
         {
@@ -77,7 +88,6 @@ int main()
             grade.at(i)=grades;
             pts = 0;
         }
-
         creditTotal=credits+creditTotal; // sum of hours
         pthours = pts*credits;            // calculation for points * hours
         pthoursTotal = pthours+pthoursTotal;   // sum of calculated points * hours
@@ -96,7 +106,7 @@ int main()
     cout << "Student GPA" << '\n' << '\n' << "Course ID" << setw(10) << "Grade" << '\n' << '\n';
     for(int j=0; j<=grade.size(); j++)
     {
-        cout << courseid.at(j) << setw(10) << grade.at(j) << '\n';
+        cout << Students.at(j) << setw(10) << grade.at(j) << '\n';
     }
     cout << "The Student GPA is " << gpa;
     return 0;
